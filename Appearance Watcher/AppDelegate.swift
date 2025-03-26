@@ -2,6 +2,7 @@ import SwiftUI
 import AppKit
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+    let appearanceWatcher = AppearanceWatcher()
     var statusItem: NSStatusItem!
     var popover: NSPopover!
 
@@ -15,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.button?.action = #selector(togglePopover(_:))
 
         popover = NSPopover()
-        popover.contentViewController = NSHostingController(rootView: MenuBarView())
+        popover.contentViewController = NSHostingController(rootView: MenuBarView(appearanceWatcher: appearanceWatcher))
     }
 
     @objc func togglePopover(_ sender: AnyObject?) {

@@ -31,6 +31,12 @@ class AppearanceWatcher: ObservableObject {
         }
     }
     
+    public func runAppearanceChangeScript() {
+        if let appearance = self.currentAppearance {
+            self.changeHandler.handleAppearanceChange(appearance: appearance)
+        }
+    }
+    
     private func getAppearanceType(appearance: NSAppearance.Name) -> AppearanceTypes {
         switch appearance {
         case .darkAqua, .accessibilityHighContrastDarkAqua, .accessibilityHighContrastVibrantDark, .vibrantDark:
